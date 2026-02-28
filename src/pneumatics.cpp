@@ -11,7 +11,7 @@ void descore_up() { descore.set(true); }
 void descore_down() { descore.set(false); }
 
 void pneumatic_control() {
-  rake.button_toggle(master.get_digital(DIGITAL_DOWN));
+  rake.button_toggle(master.get_digital(DIGITAL_B));
   descore.set(master.get_digital(DIGITAL_DOWN));
   angle.set(master.get_digital(DIGITAL_L2));
   outtake.set(master.get_digital(DIGITAL_L1));
