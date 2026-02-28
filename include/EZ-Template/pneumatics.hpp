@@ -1,10 +1,5 @@
 #pragma once
 
-extern bool rake_state;
-extern bool outtake_state;
-extern bool angle_state;
-extern bool descore_state;
-
 void rake_down();
 void rake_up();
 

@@ -44,6 +44,9 @@
 #include "EZ-Template/api.hpp"
 
 // More includes here...
+#include "antijam.hpp"
+#include "EZ-Template/intake.hpp"
+#include "EZ-Template/pneumatics.hpp"
 #include "autons.hpp"
 #include "subsystems.hpp"
 
