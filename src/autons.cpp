@@ -387,7 +387,7 @@ void beggin_darlin(){
   chassis.pid_targets_reset();
   chassis.drive_sensor_reset();
   chassis.odom_reset();
-  chassis.odom_xyt_set(-16_in, -49_in, 90_deg);
+  chassis.odom_xyt_set(16_in, -49_in, 90_deg);
   pros::delay(10);
 
   //Drive forward to match loader
@@ -446,14 +446,14 @@ void beggin_darlin(){
   angle_up();
   pros::delay(100);
 
-  chassis.pid_drive_set(23_in, 80);
+  chassis.pid_drive_set(23_in, 60);
   pros::delay(100);
   intake_speed(-127);
   pros::delay(250);
   intake_speed(0);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-1.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
   chassis.pid_wait();
 
   outtake_up();
@@ -473,7 +473,7 @@ void beggin_darlin(){
   chassis.pid_wait();
 
 //Was 100 for speed
-  chassis.pid_drive_set(-17.5_in, 75);
+  chassis.pid_drive_set(-18.5_in, 55);
   chassis.pid_wait();
   
   pros::delay(2000);
@@ -501,6 +501,7 @@ void beggin_darlin(){
 
   rake_up();
   pros::delay(250);
+  angle_up();
 
   chassis.pid_drive_set(23_in, 80);
   pros::delay(100);

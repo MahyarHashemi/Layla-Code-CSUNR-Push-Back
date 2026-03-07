@@ -22,7 +22,8 @@ inline antijam bottom_intake_antijam(&bottom_intake, intake_wait_time, intake_ou
 // Top Intake
 /////
 
-inline pros::MotorGroup top_intake({-2, 12});
+inline pros::MotorGroup top_intake({-6, 12, 3, -1, -2});
+
 
 // Hook antijam variables
 inline const int conveyor_bottom_wait_time = 40;  // The time in ms that the intake has to have 0 velocity before deciding a jam is happening
