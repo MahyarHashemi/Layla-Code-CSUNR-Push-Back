@@ -20,3 +20,11 @@ void measure_offsets();
 void scrim_awp();
 
 void beggin_darlin();
+
+void long_low_match();
+
+void low_long_match();
+
+void descore_quick_match();
+
+void descore_slow_match();

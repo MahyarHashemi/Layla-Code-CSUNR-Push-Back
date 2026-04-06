@@ -60,6 +60,10 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"TESTER 1\n\nScore Long, then Low with Match Loads", long_low_match},
+      {"TESTER 2\n\nScore low, then Long with Match Loads", low_long_match},
+      {"TESTER 3\n\nScore Long, then use descore for control", descore_quick_match},
+      {"TESTER 4\n\nScore Long, then again with descore control", descore_slow_match},
       {"Scores on Long Goal Only", beggin_darlin},
       {"Just for scrim", scrim_awp},
       {"Drive\n\nDrive forward and come back", drive_example},

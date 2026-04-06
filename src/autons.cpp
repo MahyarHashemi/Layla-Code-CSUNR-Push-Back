@@ -518,4 +518,563 @@ void beggin_darlin(){
   pros::delay(3000);
 }
 
+void long_low_match(){
+  chassis.drive_imu_reset();
+  chassis.pid_targets_reset();
+  chassis.drive_sensor_reset();
+  chassis.odom_reset();
+  chassis.odom_xyt_set(16_in, -49_in, 90_deg);
+  pros::delay(10);
+
+  //Drive forward to match loader
+  chassis.pid_drive_set(33_in, 75, true);
+  chassis.pid_wait();
+
+  //Turn to face rake to match loader
+  chassis.pid_turn_set(0_deg, 60);
+  chassis.pid_wait();
+
+  //Drive away from match loader for windup
+  chassis.pid_drive_set(2.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Drop rake mech, bring down block cover, and start running intake
+  rake_down();
+  outtake_down();
+  intake_speed(127);
+
+  //Drive backward into match loader
+  //Speed was 60
+  chassis.pid_drive_set(-24_in, 60);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  //Drive further into match loader to fully seat rake in
+  chassis.pid_drive_set(-2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(127);
+
+  //Perform shimmy to dislodge any jammed blocks in match loader
+  chassis.pid_drive_set(2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(800);
+
+  //Drive out of match loader
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Bring up rake mech
+  rake_up();
+  angle_up();
+  pros::delay(100);
+
+  chassis.pid_drive_set(23_in, 60);
+  pros::delay(100);
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(0);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  outtake_up();
+  intake_speed(127);
+  pros::delay(3000);
+
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  rake_down();
+  intake_speed(127);
+  outtake_down();
+  angle_down();
+  chassis.pid_wait();
+
+  //Turn back to face match loader
+  chassis.pid_turn_set(0_deg, 80);
+  chassis.pid_wait();
+
+  //Was 100 for speed
+  chassis.pid_drive_set(-18.5_in, 55);
+  chassis.pid_wait();
+  
+  pros::delay(2000);
+
+  chassis.pid_drive_set(3_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  pros::delay(750);
+  intake_speed(-127);
+  pros::delay(350);
+  intake_speed(127);
+
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(1000);
+
+  chassis.pid_drive_set(5_in, 80);
+  chassis.pid_wait();
+
+  rake_up();
+  pros::delay(250);
+  // angle_up();
+
+  chassis.pid_turn_set(130_deg, 60);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-55_in, 70);
+  pros::delay(100);
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(127);
+  pros::delay(300);
+  intake_speed(0);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(1.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  // outtake_up();
+  intake_speed(-127);
+  pros::delay(3000);
+}
+
+void low_long_match(){
+  chassis.drive_imu_reset();
+  chassis.pid_targets_reset();
+  chassis.drive_sensor_reset();
+  chassis.odom_reset();
+  chassis.odom_xyt_set(16_in, -49_in, 90_deg);
+  pros::delay(10);
+
+  //Drive forward to match loader
+  chassis.pid_drive_set(33_in, 75, true);
+  chassis.pid_wait();
+
+  //Turn to face rake to match loader
+  chassis.pid_turn_set(0_deg, 60);
+  chassis.pid_wait();
+
+  //Drive away from match loader for windup
+  chassis.pid_drive_set(2.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Drop rake mech, bring down block cover, and start running intake
+  rake_down();
+  outtake_down();
+  intake_speed(127);
+
+  //Drive backward into match loader
+  //Speed was 60
+  chassis.pid_drive_set(-24_in, 60);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  //Drive further into match loader to fully seat rake in
+  chassis.pid_drive_set(-2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(127);
+
+  //Perform shimmy to dislodge any jammed blocks in match loader
+  chassis.pid_drive_set(2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(800);
+
+  chassis.pid_drive_set(5_in, 80);
+  chassis.pid_wait();
+
+  rake_up();
+  pros::delay(250);
+
+  chassis.pid_turn_set(130_deg, 60);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-55_in, 70);
+  pros::delay(100);
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(127);
+  pros::delay(300);
+  intake_speed(0);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(1.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  // outtake_up();
+  intake_speed(-127);
+  pros::delay(3000);
+
+  chassis.pid_drive_set(53.5_in, 75);
+  chassis.pid_wait();
+
+  //Turn back to face match loader
+  chassis.pid_turn_set(0_deg, 80);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(2.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  rake_down();
+  angle_down();
+  outtake_down();
+  pros::delay(250);
+
+  //Was 100 for speed
+  chassis.pid_drive_set(-18.5_in, 55);
+  chassis.pid_wait();
+  
+  pros::delay(2000);
+
+  chassis.pid_drive_set(3_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  pros::delay(750);
+  intake_speed(-127);
+  pros::delay(350);
+  intake_speed(127);
+
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(1000);
+
+  //Drive out of match loader
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Bring up rake mech
+  rake_up();
+  angle_up();
+  pros::delay(100);
+
+  chassis.pid_drive_set(23_in, 60);
+  pros::delay(100);
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(0);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  outtake_up();
+  intake_speed(127);
+  pros::delay(3000);
+
+  // chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  // rake_down();
+  // intake_speed(127);
+  // outtake_down();
+  // angle_down();
+  // chassis.pid_wait();
+}
+
+void descore_quick_match(){
+  // y = -49, x = 16, theta = 90
+
+  //Reset of all sensors and initialization of starting position/heading
+  chassis.drive_imu_reset();
+  chassis.pid_targets_reset();
+  chassis.drive_sensor_reset();
+  chassis.odom_reset();
+  chassis.odom_xyt_set(16_in, -49_in, 90_deg);
+  pros::delay(10);
+
+  //Drive forward to match loader
+  chassis.pid_drive_set(33_in, 75, true);
+  chassis.pid_wait();
+
+  //Turn to face rake to match loader
+  chassis.pid_turn_set(0_deg, 60);
+  chassis.pid_wait();
+
+  //Drive away from match loader for windup
+  chassis.pid_drive_set(5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Drop rake mech, bring down block cover, and start running intake
+  rake_down();
+  outtake_down();
+  intake_speed(127);
+
+  //Drive backward into match loader
+  //Speed was 60
+  chassis.pid_drive_set(-24_in, 60);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  //Drive further into match loader to fully seat rake in
+  chassis.pid_drive_set(-2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(127);
+
+  //Perform shimmy to dislodge any jammed blocks in match loader
+  chassis.pid_drive_set(2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(800);
+
+  //Drive out of match loader
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Bring up rake mech
+  rake_up();
+  angle_up();
+  pros::delay(100);
+
+  chassis.pid_drive_set(23_in, 80);
+  pros::delay(100);
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(0);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-1.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  outtake_up();
+  intake_speed(127);
+  pros::delay(3000);
+
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  outtake_down();
+  descore_up();
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-45_deg, 50);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(13.5_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  chassis.pid_swing_set(ez::LEFT_SWING, 0_deg, 65, 10);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  descore_down();
+  pros::delay(250);
+
+  chassis.pid_drive_set(20_in, 65);
+  chassis.pid_wait();
+}
+
+void descore_slow_match(){
+  // y = -49, x = 16, theta = 90
+
+  //Reset of all sensors and initialization of starting position/heading
+  chassis.drive_imu_reset();
+  chassis.pid_targets_reset();
+  chassis.drive_sensor_reset();
+  chassis.odom_reset();
+  chassis.odom_xyt_set(16_in, -49_in, 90_deg);
+  pros::delay(10);
+
+  //Drive forward to match loader
+  chassis.pid_drive_set(33_in, 75, true);
+  chassis.pid_wait();
+
+  //Turn to face rake to match loader
+  chassis.pid_turn_set(0_deg, 60);
+  chassis.pid_wait();
+
+  //Drive away from match loader for windup
+  chassis.pid_drive_set(5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Drop rake mech, bring down block cover, and start running intake
+  rake_down();
+  outtake_down();
+  intake_speed(127);
+
+  //Drive backward into match loader
+  //Speed was 60
+  chassis.pid_drive_set(-24_in, 60);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  //Drive further into match loader to fully seat rake in
+  chassis.pid_drive_set(-2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(100);
+
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(127);
+
+  //Perform shimmy to dislodge any jammed blocks in match loader
+  chassis.pid_drive_set(2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(800);
+
+  //Drive out of match loader
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Bring up rake mech
+  rake_up();
+  angle_up();
+  pros::delay(100);
+
+  chassis.pid_drive_set(23_in, 80);
+  pros::delay(100);
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(0);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-1.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  outtake_up();
+  intake_speed(127);
+  pros::delay(3000);
+
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  rake_down();
+  intake_speed(127);
+  angle_down();
+  outtake_down();
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(0_deg, 80);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-17.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  pros::delay(2000);
+
+  chassis.pid_drive_set(3_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  pros::delay(750);
+  intake_speed(-127);
+  pros::delay(350);
+  intake_speed(127);
+
+  chassis.pid_drive_set(1_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  pros::delay(1000);
+
+  chassis.pid_drive_set(5_in, 80);
+  chassis.pid_wait();
+
+  rake_up();
+  pros::delay(250);
+
+  //Drive out of match loader
+  // chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+
+  //Bring up rake mech
+  rake_up();
+  angle_up();
+  pros::delay(100);
+
+  chassis.pid_drive_set(23_in, 80);
+  pros::delay(100);
+  intake_speed(-127);
+  pros::delay(250);
+  intake_speed(0);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-1.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  outtake_up();
+  intake_speed(127);
+  pros::delay(3000);
+
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  outtake_down();
+  descore_up();
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-45_deg, 50);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(13.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_swing_set(ez::LEFT_SWING, 0_deg, 65, 10);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(2_in, DRIVE_SPEED, false);
+  chassis.pid_wait();
+
+  descore_down();
+  pros::delay(250);
+
+  chassis.pid_drive_set(20_in, 65);
+  chassis.pid_wait();
+
+}
+
 // . . .

@@ -39,7 +39,8 @@ inline antijam top_intake_antijam(&top_intake, conveyor_bottom_wait_time, convey
 inline ez::Piston rake('A');
 inline ez::Piston outtake('B', true);
 inline ez::Piston angle('C');
-inline ez::Piston descore('D');
+// inline ez::Piston descore('D');
+inline ez::Piston descore('H');
 
 // inline pros::Motor intake(1);
 // inline pros::adi::DigitalIn limit_switch('A');
