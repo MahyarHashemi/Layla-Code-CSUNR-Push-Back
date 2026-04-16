@@ -22,7 +22,7 @@ inline antijam bottom_intake_antijam(&bottom_intake, intake_wait_time, intake_ou
 // Top Intake
 /////
 
-inline pros::MotorGroup top_intake({-6, 12, 3, -1, -2});
+inline pros::MotorGroup top_intake({-6, 16, 3, -1, -2});
 
 
 // Hook antijam variables
@@ -38,7 +38,7 @@ inline antijam top_intake_antijam(&top_intake, conveyor_bottom_wait_time, convey
 
 inline ez::Piston rake('A');
 inline ez::Piston outtake('B', true);
-inline ez::Piston angle('C');
+inline ez::Piston angle('C', true);
 // inline ez::Piston descore('D');
 inline ez::Piston descore('H');
 

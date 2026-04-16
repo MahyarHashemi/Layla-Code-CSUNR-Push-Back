@@ -527,7 +527,7 @@ void long_low_match(){
   pros::delay(10);
 
   //Drive forward to match loader
-  chassis.pid_drive_set(33_in, 75, true);
+  chassis.pid_drive_set(31.5_in, 75, true);
   chassis.pid_wait();
 
   //Turn to face rake to match loader
@@ -588,7 +588,7 @@ void long_low_match(){
   intake_speed(0);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-1.5_in, DRIVE_SPEED);
   chassis.pid_wait();
 
   outtake_up();
@@ -630,7 +630,7 @@ void long_low_match(){
 
   pros::delay(1000);
 
-  chassis.pid_drive_set(5_in, 80);
+  chassis.pid_drive_set(15_in, 80);
   chassis.pid_wait();
 
   rake_up();
@@ -649,7 +649,7 @@ void long_low_match(){
   intake_speed(0);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(1.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(7.5_in, DRIVE_SPEED);
   chassis.pid_wait();
 
   // outtake_up();

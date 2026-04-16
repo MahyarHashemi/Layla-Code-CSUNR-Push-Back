@@ -425,7 +425,8 @@
     },
     "upload_options": {
       "description": "Got Me on My Knees",
-      "icon": "planet"
+      "icon": "planet",
+      "slot": 1
     },
     "use_early_access": false
   }

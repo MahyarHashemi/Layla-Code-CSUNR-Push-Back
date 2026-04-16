@@ -23,11 +23,28 @@ void intake_set_pos(double pos, int speed){
 }
 
 void intake_control(){
+    // if (master.get_digital(DIGITAL_R1)) {
+    //   bottom_intake_antijam.set_motors(127);
+    //   top_intake_antijam.set_motors(127);
+    // } 
+    // else if (master.get_digital(DIGITAL_R2)) {
+    //   bottom_intake_antijam.set_motors(-127);
+    //   top_intake_antijam.set_motors(-127);
+    // } 
+    // else if (master.get_digital(DIGITAL_X)) {
+    //     bottom_intake_antijam.set_motors(63);
+    //   top_intake_antijam.set_motors(63);
+    // }
+    // else {
+    //   bottom_intake_antijam.set_motors(0);
+    //   top_intake_antijam.set_motors(0);
+    // }
+
     if (master.get_digital(DIGITAL_R1)) {
       bottom_intake_antijam.set_motors(127);
       top_intake_antijam.set_motors(127);
     } 
-    else if (master.get_digital(DIGITAL_R2)) {
+    else if (master.get_digital(DIGITAL_DOWN)) {
       bottom_intake_antijam.set_motors(-127);
       top_intake_antijam.set_motors(-127);
     } 
