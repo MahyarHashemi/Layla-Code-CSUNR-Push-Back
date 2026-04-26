@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Layla",
+    "project_name": "Left Layla",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -426,7 +426,7 @@
     "upload_options": {
       "description": "Got Me on My Knees",
       "icon": "planet",
-      "slot": 1
+      "slot": 2
     },
     "use_early_access": false
   }

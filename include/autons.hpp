@@ -28,3 +28,7 @@ void low_long_match();
 void descore_quick_match();
 
 void descore_slow_match();
+
+void left_descore_quick_match();
+
+void left_descore_slow_match();
