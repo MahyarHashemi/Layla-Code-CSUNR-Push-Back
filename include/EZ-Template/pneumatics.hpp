@@ -1,5 +1,7 @@
 #pragma once
 
+extern bool up_status;
+
 void rake_down();
 void rake_up();
 

@@ -21,8 +21,9 @@ inline antijam bottom_intake_antijam(&bottom_intake, intake_wait_time, intake_ou
 /////
 // Top Intake
 /////
-
-inline pros::MotorGroup top_intake({-6, 16, 3, -1, -2});
+//d DIhhhhhhhhhhhhhhhhhhhhh
+// six sebennnnnn
+inline pros::MotorGroup top_intake({-15, 16, 13, -1, -2});
 
 
 // Hook antijam variables
